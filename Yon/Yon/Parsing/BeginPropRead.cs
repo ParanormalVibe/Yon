@@ -25,7 +25,7 @@ namespace Yon.Parsing
                 {
                     throw new FormatException(); // "{xyz}{..."
                 }
-                else if (context.Buffer.Index == context.Template.Length - 2)
+                else if (context.Buffer.Index == context.Template.Length - 1)
                 {
                     throw new FormatException(); // "abcd{..."
                 }
