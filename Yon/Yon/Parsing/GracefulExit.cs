@@ -24,7 +24,8 @@ namespace Yon.Parsing
                 return false;
             }
             // Remaining characters become a token as well
-            if (context.State == TokenLexerState.ReadingDelimiter && !context.Buffer.IsEmpty)
+            if (context.State == TokenLexerState.ReadingDelimiter && !context.Buffer.IsEmpty
+                && context.Buffer.Current != '{' && context.Buffer.Current != '}')
             {
                 var token = context.Buffer.ToToken(TemplateTokenType.Delimiter);
                 // This is the one and only situation in which we need to work around
