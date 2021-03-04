@@ -11,8 +11,8 @@ namespace Yon.Templates
     {
         /// <summary>
         /// Attempts to execute the parsing rule and returns true if
-        /// the current character should be appended to the buffer,
-        /// and false if the current character should be discarded.
+        /// the current character matched the rule,
+        /// and false if the current character did not.
         /// </summary>
         /// <param name="context">The parser context to evaluate.</param>
         /// <exception cref="FormatException">Throws if the string terminates during a property definition.</exception>
@@ -21,7 +21,7 @@ namespace Yon.Templates
             // We use -2 as the final character won't be appended until _after_ the final round of rule evaluations.
             if (context.Buffer.Index != context.Template.Length - 2)
             {
-                return true;
+                return false;
             }
             // Remaining characters become a token as well
             if (context.State == TokenParserState.ReadingDelimiter && !context.Buffer.IsEmpty)

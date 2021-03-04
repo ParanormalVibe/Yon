@@ -30,12 +30,12 @@ namespace Yon.Templates
                     context.Tokens.Enqueue(context.Buffer.ToToken(TemplateTokenType.Property));
                     context.Buffer.Clear();
                     context.State = TokenParserState.ReadingDelimiter;
-                    return false;
+                    return true;
                 }
             }
             else
             {
-                return true;
+                return false;
             }
         }
     }

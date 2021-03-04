@@ -26,14 +26,16 @@ namespace Yon.Templates
             var context = new TemplateParserContext(bufferSource.Buffer, template);
             foreach (var c in template)
             {
-                var appendChar = true;
+                var matchedRule = false;
                 foreach (var rule in _rules)
                 {
                     // if even just one rule says to not append the character,
                     // we'll listen to it and ignore all of the rules that say to append
-                    appendChar = rule.Evaluate(context) && appendChar;
+                    matchedRule = rule.Evaluate(context);
+                    if (matchedRule)
+                        break;
                 }
-                if (appendChar)
+                if (!matchedRule)
                 {
                     bufferSource.Append(c);
                 }

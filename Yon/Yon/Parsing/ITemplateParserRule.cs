@@ -14,8 +14,8 @@ namespace Yon.Templates
     {
         /// <summary>
         /// Attempts to execute the parsing rule and returns true if
-        /// the current character should be appended to the buffer,
-        /// and false if the current character should be discarded.
+        /// the current character matched the rule,
+        /// and false if the current character did not.
         /// </summary>
         /// <param name="context">The parser context to evaluate.</param>
         /// <returns></returns>
