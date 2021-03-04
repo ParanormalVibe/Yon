@@ -52,6 +52,9 @@ namespace Yon.Parsing
             _builder = source.Builder;
         }
         
+        /// <summary>
+        /// Removes all characters from the buffer.
+        /// </summary>
         public void Clear()
         {
             _builder.Clear();

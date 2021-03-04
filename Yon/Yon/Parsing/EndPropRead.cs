@@ -3,16 +3,19 @@ using System;
 namespace Yon.Parsing
 {
     /// <summary>
-    /// 
+    /// This lexer rule attempts to match on '}' characters
+    /// and then create a new token of type TemplateTokenType.Property.
     /// </summary>
     public class EndPropRead : ITemplateLexerRule
     {
         /// <summary>
-        /// 
+        /// Attempts to execute the parsing rule and returns true if
+        /// the current character matched the rule,
+        /// and false if the current character did not.
         /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        /// <exception cref="FormatException"></exception>
+        /// <param name="context">The Lexer context to evaluate.</param>
+        /// <exception cref="FormatException">Throws if the buffer is empty
+        /// or if the lexer is in the ReadingProperty state.</exception>
         public bool Evaluate(TemplateLexerContext context)
         {
             if (context.Buffer.Current == '}')
