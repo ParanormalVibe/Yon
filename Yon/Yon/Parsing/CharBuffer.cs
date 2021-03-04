@@ -50,6 +50,7 @@ namespace Yon.Parsing
         {
             Index = -1;
             _builder = source.Builder;
+            source.Appended += IncrementIndex;
         }
         
         /// <summary>
