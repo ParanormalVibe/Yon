@@ -4,11 +4,11 @@ using System;
 namespace Yon.Templates
 {
     /// <summary>
-    /// This class is used to provide parser rules with
+    /// This class is used to provide Lexer rules with
     /// the information they need to contribute to the
     /// parsing operation.
     /// </summary>
-    public class TemplateParserContext
+    public class TemplateLexerContext
     {
         /// <summary>
         /// The character buffer being used in this parsing context.
@@ -27,22 +27,22 @@ namespace Yon.Templates
         public string Template { get; private set; }
         
         /// <summary>
-        /// The current state/mode of the parser.
+        /// The current state/mode of the Lexer.
         /// </summary>
-        public TokenParserState State { get; set; }
+        public TokenLexerState State { get; set; }
 
         /// <summary>
-        /// Creates a new instance of the TemplateParserContext class.
+        /// Creates a new instance of the TemplateLexerContext class.
         /// </summary>
-        /// <param name="buffer">The character buffer to be used by the parser.
+        /// <param name="buffer">The character buffer to be used by the Lexer.
         /// Usually supplied by a CharBufferSource.</param>
         /// <param name="template">The template string to parse.</param>
-        public TemplateParserContext(CharBuffer buffer, string template)
+        public TemplateLexerContext(CharBuffer buffer, string template)
         {
             Buffer = buffer;
             Tokens = new Queue<TemplateToken>();
             Template = template;
-            State = TokenParserState.ReadingDelimiter;
+            State = TokenLexerState.ReadingDelimiter;
         }
     }
 }

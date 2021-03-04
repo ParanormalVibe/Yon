@@ -4,10 +4,10 @@ using System.Text;
 namespace Yon.Templates
 {
     /// <summary>
-    /// Used by implementations of ITemplateParserRule.
+    /// Used by implementations of ITemplateLexerRule.
     /// The collection of previous characters
     /// that will eventually be combined to form a token string.
-    /// This class was created in order to allow parser rules to
+    /// This class was created in order to allow Lexer rules to
     /// still access the character buffer while removing their ability
     /// to append to the buffer.
     /// This restriction makes it easier to reason about the effects that
@@ -18,7 +18,7 @@ namespace Yon.Templates
         /// <summary>
         /// The final character at the end of the buffer.
         /// When used in parsing templates, this character
-        /// is the current character being evaluated by parser rules.
+        /// is the current character being evaluated by Lexer rules.
         /// </summary>
         public char Current => _builder[^1];
 

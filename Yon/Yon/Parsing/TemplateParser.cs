@@ -5,25 +5,25 @@ using System.Text;
 namespace Yon.Templates
 {
     /// <summary>
-    /// I hand rolled a parser instead of using Regex because I would
+    /// I hand rolled a Lexer instead of using Regex because I would
     /// like to have detailed syntax error reporting for end users.
     /// I chose this over ANTLR as I didn't feel it necessary to introduce
     /// a new dependency for such a simple grammar.
     /// </summary>
-    public class TemplateParser
+    public class TemplateLexer
     {
-        private readonly IList<ITemplateParserRule> _rules;
+        private readonly IList<ITemplateLexerRule> _rules;
 
-        public TemplateParser()
+        public TemplateLexer()
         {
-            _rules = new List<ITemplateParserRule>();
+            _rules = new List<ITemplateLexerRule>();
             _rules.Add(new GracefulExit());
         }
         
         public Queue<TemplateToken> Parse(string template)
         {
             var bufferSource = new CharBufferSource();
-            var context = new TemplateParserContext(bufferSource.Buffer, template);
+            var context = new TemplateLexerContext(bufferSource.Buffer, template);
             foreach (var c in template)
             {
                 var matchedRule = false;

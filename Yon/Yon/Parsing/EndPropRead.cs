@@ -5,7 +5,7 @@ namespace Yon.Templates
     /// <summary>
     /// 
     /// </summary>
-    public class EndPropRead : ITemplateParserRule
+    public class EndPropRead : ITemplateLexerRule
     {
         /// <summary>
         /// 
@@ -13,7 +13,7 @@ namespace Yon.Templates
         /// <param name="context"></param>
         /// <returns></returns>
         /// <exception cref="FormatException"></exception>
-        public bool Evaluate(TemplateParserContext context)
+        public bool Evaluate(TemplateLexerContext context)
         {
             if (context.Buffer.Current == '}')
             {
@@ -21,7 +21,7 @@ namespace Yon.Templates
                 {
                     throw new FormatException(); // "}..." or "abc{}xyz"
                 }
-                else if (context.State != TokenParserState.ReadingProperty)
+                else if (context.State != TokenLexerState.ReadingProperty)
                 {
                     throw new FormatException(); // "}}"
                 }
@@ -29,7 +29,7 @@ namespace Yon.Templates
                 {
                     context.Tokens.Enqueue(context.Buffer.ToToken(TemplateTokenType.Property));
                     context.Buffer.Clear();
-                    context.State = TokenParserState.ReadingDelimiter;
+                    context.State = TokenLexerState.ReadingDelimiter;
                     return true;
                 }
             }

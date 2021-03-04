@@ -1,6 +1,6 @@
 namespace Yon.Tests.Parsing
 {
-    public class TemplateParserTests
+    public class TemplateLexerTests
     {
         
     }

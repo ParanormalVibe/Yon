@@ -1,6 +1,6 @@
 namespace Yon.Templates
 {
-    public enum TokenParserState
+    public enum TokenLexerState
     {
         ReadingProperty,
         ReadingDelimiter
