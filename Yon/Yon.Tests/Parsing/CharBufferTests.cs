@@ -6,7 +6,7 @@ namespace Yon.Tests.Parsing
 {
     public class CharBufferTests
     {
-        protected CharBufferSource BufferSource { get; private set; }
+        private CharBufferSource BufferSource { get; set; }
 
         [SetUp]
         public void SetUp()
