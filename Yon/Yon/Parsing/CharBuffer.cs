@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace Yon.Templates
+namespace Yon.Parsing
 {
     /// <summary>
     /// Used by implementations of ITemplateLexerRule.

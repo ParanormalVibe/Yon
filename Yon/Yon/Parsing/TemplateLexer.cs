@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Yon.Templates
+namespace Yon.Parsing
 {
     /// <summary>
     /// I hand rolled a Lexer instead of using Regex because I would

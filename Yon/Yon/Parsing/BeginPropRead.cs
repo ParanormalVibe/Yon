@@ -1,6 +1,6 @@
 using System;
 
-namespace Yon.Templates
+namespace Yon.Parsing
 {
     /// <summary>
     /// 

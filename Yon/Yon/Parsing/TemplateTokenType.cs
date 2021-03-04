@@ -1,4 +1,4 @@
-namespace Yon.Templates
+namespace Yon.Parsing
 {
     public enum TemplateTokenType
     {

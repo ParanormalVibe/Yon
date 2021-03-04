@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Yon.Templates
+namespace Yon.Parsing
 {
     /// <summary>
     /// Template Lexer rules were created to improve the readability of

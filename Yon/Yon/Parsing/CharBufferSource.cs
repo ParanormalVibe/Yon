@@ -1,7 +1,7 @@
 using System.Text;
 using System;
 
-namespace Yon.Templates
+namespace Yon.Parsing
 {
     public class CharBufferSource
     {

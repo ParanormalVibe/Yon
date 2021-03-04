@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 
-namespace Yon.Templates
+namespace Yon.Parsing
 {
     /// <summary>
     /// This class is used to provide Lexer rules with
