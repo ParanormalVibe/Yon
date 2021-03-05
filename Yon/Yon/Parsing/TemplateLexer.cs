@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Yon.Parsing
@@ -17,10 +18,12 @@ namespace Yon.Parsing
         public TemplateLexer()
         {
             _rules = new List<ITemplateLexerRule>();
+            _rules.Add(new BeginPropRead());
+            _rules.Add(new EndPropRead());
             _rules.Add(new GracefulExit());
         }
         
-        public Queue<TemplateToken> Parse(string template)
+        public Queue<TemplateToken> GetTokens(string template)
         {
             var bufferSource = new CharBufferSource();
             var context = new TemplateLexerContext(bufferSource.Buffer, template);
