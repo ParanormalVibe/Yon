@@ -8,6 +8,9 @@ namespace Yon.Tests.Parsing
 
         public class Evaluate
         {
+            /// <summary>
+            /// Testing the happy path.
+            /// </summary>
             [Test]
             public void Creates_Delimiter_Token_When_Input_Expected_And_Buffer_Not_Empty()
             {
