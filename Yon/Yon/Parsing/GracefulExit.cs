@@ -18,8 +18,7 @@ namespace Yon.Parsing
         /// <exception cref="FormatException">Throws if the string terminates during a property definition.</exception>
         public bool Evaluate(TemplateLexerContext context)
         {
-            // We use -2 as the final character won't be appended until _after_ the final round of rule evaluations.
-            if (context.Buffer.Index != context.Template.Length - 2)
+            if (context.Buffer.Index != context.Template.Length - 1)
             {
                 return false;
             }
