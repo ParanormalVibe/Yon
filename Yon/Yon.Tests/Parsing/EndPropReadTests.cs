@@ -9,6 +9,11 @@ namespace Yon.Tests.Parsing
 
         public class Evaluate
         {
+            /// <summary>
+            /// We throw when the buffer is empty because that usually
+            /// means that the user didn't provide a property name value
+            /// (e.g "abc{}xyz"), which would be problematic to allow.
+            /// </summary>
             [Test]
             public void Throws_FormatException_When_Buffer_Is_Empty()
             {
@@ -18,7 +23,12 @@ namespace Yon.Tests.Parsing
                 context.CurrentCharacter = '}';
                 Assert.Throws<FormatException>(() => new EndPropRead().Evaluate(context));
             }
-
+            
+            /// <summary>
+            /// We throw on the ReadingDelimiter context state because that means the
+            /// closing property character '}' appeared before the opening property
+            /// character '{'.
+            /// </summary>
             [Test]
             public void Throws_FormatException_When_Context_State_Is_ReadingDelimiter()
             {
@@ -32,7 +42,10 @@ namespace Yon.Tests.Parsing
                 context.State = TokenLexerState.ReadingDelimiter;
                 Assert.Throws<FormatException>(() => new EndPropRead().Evaluate(context));
             }
-
+            
+            /// <summary>
+            /// Testing the happy path.
+            /// </summary>
             [Test]
             public void Creates_Property_Token_When_Input_Expected_And_Buffer_Not_Empty()
             {
