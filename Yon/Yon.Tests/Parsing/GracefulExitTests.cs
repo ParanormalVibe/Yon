@@ -16,9 +16,9 @@ namespace Yon.Tests.Parsing
                 src.Append('a');
                 src.Append('b');
                 src.Append('c');
-                src.Append('d');
+                context.CurrentCharacter = 'd';
                 new GracefulExit().Evaluate(context);
-                Assert.AreEqual(context.Tokens.Dequeue()?.Value, "abcd");
+                Assert.AreEqual("abcd", context.Tokens.Dequeue()?.Value);
             }
         }
     }

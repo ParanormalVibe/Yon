@@ -26,10 +26,7 @@ namespace Yon.Tests.Parsing
             {
                 var src = new CharBufferSource();
                 Context = new TemplateLexerContext(src.Buffer, "{x}{");
-                src.Append('{');
-                src.Append('x');
-                src.Append('}');
-                src.Append('{');
+                Context.CurrentCharacter = '{';
                 Assert.Throws<FormatException>(() => TestRule.Evaluate(Context));
             }
             
@@ -44,12 +41,8 @@ namespace Yon.Tests.Parsing
             public void Throws_Format_Exception_When_Context_State_Is_ReadingProperty()
             {
                 var src = new CharBufferSource();
-                Context = new TemplateLexerContext(src.Buffer, "a{x{zzzz}");
-                Context.State = TokenLexerState.ReadingProperty;
-                src.Append('a');
-                src.Append('{');
-                src.Append('x');
-                src.Append('{');
+                Context = new TemplateLexerContext(src.Buffer, "abcdefg");
+                Context.CurrentCharacter = '{';
                 Assert.Throws<FormatException>(() => TestRule.Evaluate(Context));
             }
             
@@ -67,7 +60,7 @@ namespace Yon.Tests.Parsing
                 src.Append('b');
                 src.Append('c');
                 src.Append('d');
-                src.Append('{');
+                Context.CurrentCharacter = '{';
                 Assert.Throws<FormatException>(() => TestRule.Evaluate(Context));
             }
             
@@ -79,7 +72,7 @@ namespace Yon.Tests.Parsing
                 Context.State = TokenLexerState.ReadingDelimiter;
                 src.Append('a');
                 src.Append('b');
-                src.Append('{');
+                Context.CurrentCharacter = '{';
                 TestRule.Evaluate(Context);
                 Assert.AreEqual(Context.State, TokenLexerState.ReadingProperty);
             }

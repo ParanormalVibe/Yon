@@ -18,19 +18,19 @@ namespace Yon.Parsing
         /// <exception cref="FormatException">Throws if the string terminates during a property definition.</exception>
         public bool Evaluate(TemplateLexerContext context)
         {
-            if (context.Buffer.Index != context.Template.Length - 1)
+            if (context.Buffer.Index != context.Template.Length - 2)
             {
                 return false;
             }
             // Remaining characters become a token as well
             if (context.State == TokenLexerState.ReadingDelimiter && !context.Buffer.IsEmpty
-                && context.Buffer.Current != '{' && context.Buffer.Current != '}')
+                && context.CurrentCharacter != '{' && context.CurrentCharacter != '}')
             {
                 var token = context.Buffer.ToToken(TemplateTokenType.Delimiter);
                 // This is the one and only situation in which we need to work around
                 // being unable to modify the buffer.
-                token = new TemplateToken(TemplateTokenType.Delimiter, token.Value + context.Buffer.Current);
-                context.Tokens.Enqueue(context.Buffer.ToToken(TemplateTokenType.Delimiter));
+                token = new TemplateToken(TemplateTokenType.Delimiter, token.Value + context.CurrentCharacter);
+                context.Tokens.Enqueue(token);
                 context.Buffer.Clear();
                 return true;
             }

@@ -18,7 +18,7 @@ namespace Yon.Parsing
         /// or if the lexer is in the ReadingProperty state.</exception>
         public bool Evaluate(TemplateLexerContext context)
         {
-            if (context.Buffer.Current == '}')
+            if (context.CurrentCharacter == '}')
             {
                 if (context.Buffer.IsEmpty)
                 {

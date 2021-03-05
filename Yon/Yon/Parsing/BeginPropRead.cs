@@ -15,7 +15,7 @@ namespace Yon.Parsing
         /// <exception cref="FormatException"></exception>
         public bool Evaluate(TemplateLexerContext context)
         {
-            if (context.Buffer.Current == '{')
+            if (context.CurrentCharacter == '{')
             {
                 if (context.State == TokenLexerState.ReadingProperty)
                 {
@@ -25,7 +25,7 @@ namespace Yon.Parsing
                 {
                     throw new FormatException(); // "{xyz}{..."
                 }
-                else if (context.Buffer.Index == context.Template.Length - 1)
+                else if (context.Buffer.Index == context.Template.Length - 2)
                 {
                     throw new FormatException(); // "abcd{..."
                 }

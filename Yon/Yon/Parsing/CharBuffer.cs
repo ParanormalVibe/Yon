@@ -16,13 +16,6 @@ namespace Yon.Parsing
     public class CharBuffer
     {
         /// <summary>
-        /// The final character at the end of the buffer.
-        /// When used in parsing templates, this character
-        /// is the current character being evaluated by Lexer rules.
-        /// </summary>
-        public char Current => _builder[^1];
-
-        /// <summary>
         /// The number of characters currently in the buffer.
         /// </summary>
         public int Length => _builder.Length;

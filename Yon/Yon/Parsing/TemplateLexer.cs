@@ -26,6 +26,7 @@ namespace Yon.Parsing
             var context = new TemplateLexerContext(bufferSource.Buffer, template);
             foreach (var c in template)
             {
+                context.CurrentCharacter = c;
                 var matchedRule = false;
                 foreach (var rule in _rules)
                 {

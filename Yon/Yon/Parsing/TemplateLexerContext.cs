@@ -30,6 +30,11 @@ namespace Yon.Parsing
         /// The current state/mode of the Lexer.
         /// </summary>
         public TokenLexerState State { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public  char CurrentCharacter { get; set; }
 
         /// <summary>
         /// Creates a new instance of the TemplateLexerContext class.
